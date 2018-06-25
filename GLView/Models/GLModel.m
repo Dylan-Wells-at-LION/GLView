@@ -259,6 +259,7 @@ WWDC2010Attributes;
             GLfloat coords[2];
             [scanner scanFloat:&coords[0]];
             [scanner scanFloat:&coords[1]];
+            coords[1] *= -1;
             [tempTextCoordData appendBytes:coords length:sizeof(coords)];
         }
         else if ([type isEqualToString:@"vn"])
