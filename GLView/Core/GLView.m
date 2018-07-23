@@ -195,7 +195,7 @@
     [self createFramebuffer];
     
     //defaults
-    _fov = 0.0; //orthographic
+    _fov = 0.5; //orthographic (original value is 0.0)
     _frameInterval = 1.0/60.0; // 60 fps
     _contentTransform = CATransform3DIdentity;
 }
