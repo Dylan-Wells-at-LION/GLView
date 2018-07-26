@@ -195,7 +195,7 @@
     [self createFramebuffer];
     
     //defaults
-    _fov = 0.5; //orthographic (original value is 0.0)
+    _fov = 50; //orthographic (original value is 0.0)
     _frameInterval = 1.0/60.0; // 60 fps
     _contentTransform = CATransform3DIdentity;
 }
@@ -343,6 +343,7 @@
     glLoadIdentity();
     if (self.fov <= 0.0)
     {
+        NSLog(@"self.fov <= 0.0");
         GLfloat near = self.near ?: (-self.framebufferWidth * 0.5);
         GLfloat far = self.far ?: (self.framebufferWidth * 0.5);
         glOrthof(-self.bounds.size.width / 2.0, self.bounds.size.width / 2.0,
@@ -350,6 +351,7 @@
     }
     else
     {
+        NSLog(@"self.fov > 0.0");
         GLfloat near = (self.near > 0.0)? self.near: 1.0;
         GLfloat far = (self.far > self.near)? self.far: (near + 50.0f);
         GLfloat aspect = self.bounds.size.width / self.bounds.size.height;
