@@ -180,6 +180,9 @@
 
 - (void)setUp
 {
+    
+    NSLog(@"setUp");
+    
     //set up layer
     GLLayer *glLayer = (GLLayer *)self.layer;
     glLayer.needsDisplayOnBoundsChange = YES;
@@ -224,9 +227,8 @@
 - (void)setFov:(CGFloat)fov
 {
     NSLog(@"setFov %f", fov );
-    NSLog(@"setFov2 %d", fov );
 
-    _fov = fov;
+    _fov = 50.0; //fov;
     [self setNeedsDisplay];
 }
 
@@ -347,10 +349,7 @@
     
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    
-    NSLog(@"self.fov %f", self.fov );
-    NSLog(@"self.fov %d", self.fov );
-    
+        
     if (self.fov <= 0.0)
     {
         GLfloat near = self.near ?: (-self.framebufferWidth * 0.5);
