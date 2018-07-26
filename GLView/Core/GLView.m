@@ -227,8 +227,9 @@
 - (void)setFov:(CGFloat)fov
 {
     NSLog(@"setFov %f", fov );
+    NSLog(@"setFov2 %@", fov );
 
-    _fov = 3.0; //fov;
+    _fov = 0.5; //fov;
     [self setNeedsDisplay];
 }
 
