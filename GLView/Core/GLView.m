@@ -78,9 +78,6 @@
     //apply transform
     GLLoadCATransform3D(view.contentTransform);
     
-     NSLog(@"view.fov %f", view.fov );
-
-    
     //do drawing
     if (view.fov <= 0.0)
     {
@@ -226,6 +223,9 @@
 
 - (void)setFov:(CGFloat)fov
 {
+    NSLog(@"setFov %f", fov );
+    NSLog(@"setFov2 %d", fov );
+
     _fov = fov;
     [self setNeedsDisplay];
 }
@@ -349,6 +349,7 @@
     glLoadIdentity();
     
     NSLog(@"self.fov %f", self.fov );
+    NSLog(@"self.fov %d", self.fov );
     
     if (self.fov <= 0.0)
     {
