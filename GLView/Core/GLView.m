@@ -228,7 +228,7 @@
 {
     NSLog(@"setFov %f", fov );
 
-    _fov = 50.0; //fov;
+    _fov = 3.0; //fov;
     [self setNeedsDisplay];
 }
 
