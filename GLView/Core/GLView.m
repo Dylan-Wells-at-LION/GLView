@@ -78,6 +78,9 @@
     //apply transform
     GLLoadCATransform3D(view.contentTransform);
     
+     NSLog(@"view.fov %f", view.fov );
+
+    
     //do drawing
     if (view.fov <= 0.0)
     {
@@ -117,6 +120,9 @@
     glPixelStorei(GL_PACK_ALIGNMENT, 4);
     glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
     
+    NSLog(@"width %f", width );
+    NSLog(@"height %f", height );
+
     //create CGImage with the pixel data
     CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, data, dataLength, NULL);
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
@@ -195,7 +201,7 @@
     [self createFramebuffer];
     
     //defaults
-    _fov = 50; //orthographic (original value is 0.0)
+    _fov = 75.0; //orthographic (original value is 0.0)
     _frameInterval = 1.0/60.0; // 60 fps
     _contentTransform = CATransform3DIdentity;
 }
@@ -341,9 +347,11 @@
     
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+    
+    NSLog(@"self.fov %f", self.fov );
+    
     if (self.fov <= 0.0)
     {
-        NSLog(@"self.fov <= 0.0");
         GLfloat near = self.near ?: (-self.framebufferWidth * 0.5);
         GLfloat far = self.far ?: (self.framebufferWidth * 0.5);
         glOrthof(-self.bounds.size.width / 2.0, self.bounds.size.width / 2.0,
@@ -351,7 +359,6 @@
     }
     else
     {
-        NSLog(@"self.fov > 0.0");
         GLfloat near = (self.near > 0.0)? self.near: 1.0;
         GLfloat far = (self.far > self.near)? self.far: (near + 50.0f);
         GLfloat aspect = self.bounds.size.width / self.bounds.size.height;
