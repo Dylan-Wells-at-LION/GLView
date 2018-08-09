@@ -49,7 +49,12 @@
     
     GLLight *light = [[GLLight alloc] init];
     light.transform = CATransform3DMakeTranslation(-0.5, 1.0, 0.5);
-    self.lights = @[light];
+
+    GLLight *light2 = [[GLLight alloc] init];
+    light2.transform = CATransform3DMakeTranslation(-0.25, 0.75, 0.25);
+
+
+    self.lights = @[light,light2];
     
     _modelTransform = CATransform3DIdentity;
 }
